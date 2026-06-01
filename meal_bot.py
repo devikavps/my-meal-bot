@@ -2,9 +2,8 @@ import streamlit as st
 import google.generativeai as genai
 
 # Super Trick: GitHub check scanners block pannaama irukka API Key-ah split panni vetchutom!
-part1 = "AIzaSyDSOpHfF3_1"
-part2 = "-DK5CmqB68Fy2nVpuNiFHiw"
-GOOGLE_API_KEY = part1 + part2
+GOOGLE_API_KEY = st.secrets["GEMINI_API_KEY"]
+genai.configure(api_key=GOOGLE_API_KEY)
 
 genai.configure(api_key=GOOGLE_API_KEY)
 
