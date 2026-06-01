@@ -6,6 +6,7 @@ GOOGLE_API_KEY = "AIzaSyDSOpHfF3_1-DK5CmqB68Fy2nVpuNiFHiw"
 
 genai.configure(api_key=GOOGLE_API_KEY)
 
+# Simple system instruction setup
 system_instruction = (
     "You are Kishore's personal South Indian Dietitian. "
     "Give extremely short, bulleted, and crisp responses. No long paragraphs. "
@@ -16,7 +17,6 @@ system_instruction = (
 st.set_page_config(page_title="Kishore's Meal Planner", page_icon="🥗")
 st.title("🥗 Kishore's Personal Meal Planner")
 
-# Simplest way to use Gemini without chat history session clash
 if "messages" not in st.session_state:
     st.session_state.messages = [{"role": "assistant", "content": "Vanakkam Kishore! Naan un personal meal planner. Iniku enna fitness goal?"}]
 
@@ -29,14 +29,12 @@ if user_input := st.chat_input("Type your message here..."):
     with st.chat_message("user"):
         st.write(user_input)
     
-    # Direct content generation with system instruction
-    model = genai.GenerativeModel(
-        model_name="gemini-2.5-flash",
-        system_instruction=system_instruction
-    )
+    # 100% Fixed Content Generation Logic for Older Libraries
+    model = genai.GenerativeModel("gemini-2.5-flash")
     
-    # Safe text response call
-    response = model.generate_content(user_input)
+    # Prompt கூடவே system instruction-ஐயும் சேர்த்து அனுப்புறோம்
+    full_prompt = f"{system_instruction}\n\nUser Question: {user_input}"
+    response = model.generate_content(full_prompt)
     
     st.session_state.messages.append({"role": "assistant", "content": response.text})
     with st.chat_message("assistant"):
