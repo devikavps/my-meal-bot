@@ -4,7 +4,6 @@ import google.generativeai as genai
 # Direct API Key configuration
 GOOGLE_API_KEY = st.secrets["GEMINI_API_KEY"]
 genai.configure(api_key=GOOGLE_API_KEY)
-
 st.set_page_config(page_title="Kishore's Meal Planner", page_icon="🥗")
 st.title("🥗 Kishore's Personal Meal Planner")
 
