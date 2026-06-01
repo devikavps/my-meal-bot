@@ -2,7 +2,7 @@ import streamlit as st
 import google.generativeai as genai
 
 # Direct API Key configuration
-GOOGLE_API_KEY = "AIzaSyDSOpHfF3_1-DK5CmqB68Fy2nVpuNiFHiw"
+GOOGLE_API_KEY = "AQ.Ab8RN6JCQbO31meG-Xtl11FcKSyl4m5UPq8dZKlDL073L385qQ"
 genai.configure(api_key=GOOGLE_API_KEY)
 
 st.set_page_config(page_title="Kishore's Meal Planner", page_icon="🥗")
